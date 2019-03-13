@@ -1,5 +1,6 @@
 package Java.guess_the_number;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -16,6 +17,9 @@ public class GameWindow extends JFrame {
     private static float drop_v = 200;
 
     public static void main(String[] args) throws IOException {
+        background = ImageIO.read(GameWindow.class.getResourceAsStream("background.png"));
+        game_over = ImageIO.read(GameWindow.class.getResourceAsStream("game_over.png"));
+        drop = ImageIO.read(GameWindow.class.getResourceAsStream("drop.png"));
         game_window = new GameWindow();
         game_window.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         game_window.setLocation(200,100);
@@ -35,9 +39,10 @@ public class GameWindow extends JFrame {
 
 
         drop_top = drop_top + drop_v * delta_time;
+        drop_left = drop_left + drop_v * delta_time;
         g.drawImage(background,0 , 0, null);
         g.drawImage(drop,(int) drop_left,(int) drop_top, null);
-
+       // g.drawImage(game_over, 280, 120, null);
 
     }
 
